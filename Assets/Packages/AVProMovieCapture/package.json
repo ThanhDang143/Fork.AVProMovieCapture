@@ -1,0 +1,24 @@
+{
+    "name": "thanhdv.renderheads.avpro-movie-capture",
+    "version": "5.2.1",
+    "displayName": "ThanhDV's AVProMovieCapture",
+    "description": "Powerful high-performance yet easy to use audio-video capture solution for Unity.",
+    "unity": "2022.3",
+    "keywords": [
+        "MovieCapture",
+        "RenderHeads",
+        "ScreenCapture"
+    ],
+    "author": {
+        "name": "ThanhDV",
+        "email": "vanthanh1998@gmail.com",
+        "url": "https://knowledge.thanhdv.com/"
+    },
+    "dependencies": {},
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/ThanhDang143/Fork.AVProMovieCapture.git"
+    },
+    "changelogUrl": "https://github.com/ThanhDang143/Fork.AVProMovieCapture/blob/main/Assets/Packages/AVProMovieCapture/CHANGELOG.md",
+    "license": "MIT"
+}
