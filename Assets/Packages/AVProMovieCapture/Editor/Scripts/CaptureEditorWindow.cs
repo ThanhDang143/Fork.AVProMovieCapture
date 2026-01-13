@@ -1,26 +1,26 @@
 ﻿#if UNITY_EDITOR
 #if UNITY_2017_3_OR_NEWER
-	#define AVPRO_MOVIECAPTURE_OFFLINE_AUDIOCAPTURE
+#define AVPRO_MOVIECAPTURE_OFFLINE_AUDIOCAPTURE
 #endif
 #if UNITY_5_4_OR_NEWER || (UNITY_5 && !UNITY_5_0)
-	#define AVPRO_MOVIECAPTURE_WINDOWTITLE_51
-	#define AVPRO_MOVIECAPTURE_GRAPHICSDEVICETYPE_51
+#define AVPRO_MOVIECAPTURE_WINDOWTITLE_51
+#define AVPRO_MOVIECAPTURE_GRAPHICSDEVICETYPE_51
 #endif
 #if UNITY_5_4_OR_NEWER || (UNITY_5 && !UNITY_5_0 && !UNITY_5_1 && !UNITY_5_2)
-	#define AVPRO_MOVIECAPTURE_SCENEMANAGER_53
+#define AVPRO_MOVIECAPTURE_SCENEMANAGER_53
 #endif
 #if UNITY_5_4_OR_NEWER || UNITY_5
-	#define AVPRO_MOVIECAPTURE_DEFERREDSHADING
+#define AVPRO_MOVIECAPTURE_DEFERREDSHADING
 #endif
 #if UNITY_2017_1_OR_NEWER
-	#define AVPRO_MOVIECAPTURE_PLAYABLES_SUPPORT
+#define AVPRO_MOVIECAPTURE_PLAYABLES_SUPPORT
 #endif
 #if UNITY_2018_1_OR_NEWER
-	// Unity 2018.1 introduces stereo cubemap render methods
-	#define AVPRO_MOVIECAPTURE_UNITY_STEREOCUBEMAP_RENDER
+// Unity 2018.1 introduces stereo cubemap render methods
+#define AVPRO_MOVIECAPTURE_UNITY_STEREOCUBEMAP_RENDER
 #endif
 #if !UNITY_2018_3_OR_NEWER
-	#define SUPPORT_SCENE_VIEW_GIZMOS_CAPTURE
+#define SUPPORT_SCENE_VIEW_GIZMOS_CAPTURE
 #endif
 
 using UnityEngine;
@@ -67,7 +67,7 @@ namespace RenderHeads.Media.AVProMovieCapture.Editor
 
 		private readonly string[] _downScales = { "Original", "Half", "Quarter", "Eighth", "Sixteenth", "Custom" };
 		private readonly string[] _captureModes = { "Realtime Capture", "Offline Render" };
-		private readonly string[] _outputFolders = { "Project Folder", "Persistent Data Folder", "Absolute Folder", "Desktop", "Pictures", "Videos" };		// NOTE: PhotoLibrary is not included as Unity Editor doesn't have permission to use it anyway
+		private readonly string[] _outputFolders = { "Project Folder", "Persistent Data Folder", "Absolute Folder", "Desktop", "Pictures", "Videos" };      // NOTE: PhotoLibrary is not included as Unity Editor doesn't have permission to use it anyway
 		private readonly string[] _sourceNames = { "Screen", "Camera", "Camera 360 (Mono+Stereo)", "Camera 360 (experimental ODS Stereo)" };
 		private readonly string[] _tabNames = { "Capture", "Visual", "Audio", "Encoding" };
 
@@ -75,7 +75,7 @@ namespace RenderHeads.Media.AVProMovieCapture.Editor
 		private readonly static GUIContent _guiCameraSelectorTag = new GUIContent("Tag");
 		private readonly static GUIContent _guiCameraSelectorName = new GUIContent("Name");
 		private readonly static GUIContent _guiContributingCameras = new GUIContent("Contributing Cameras");
-		private readonly static GUIContent _guiCaptureWorldSpaceUI= new GUIContent("Capture Worldspace UI");
+		private readonly static GUIContent _guiCaptureWorldSpaceUI = new GUIContent("Capture Worldspace UI");
 		private readonly static GUIContent _guiCameraRotation = new GUIContent("Camera Rotation");
 		private readonly static GUIContent _guiInterpupillaryDistance = new GUIContent("Interpupillary distance");
 		private readonly static GUIContent _guiStartDelay = new GUIContent("Start Delay");
@@ -273,7 +273,7 @@ namespace RenderHeads.Media.AVProMovieCapture.Editor
 			"      + Development OS version\n" +
 			"      + AVPro Movie Capture plugin version\n";
 
-		[MenuItem("Window/Open AVPro Movie Capture..")]
+		[MenuItem("Tools/ThanhDV/AVPro Movie Capture/Open...")]
 		public static void Init()
 		{
 			if (_isInit || _isCreated)
@@ -297,7 +297,7 @@ namespace RenderHeads.Media.AVProMovieCapture.Editor
 		{
 			_isCreated = true;
 			if ((Application.platform == RuntimePlatform.WindowsEditor)
-			||  (Application.platform == RuntimePlatform.OSXEditor))
+			|| (Application.platform == RuntimePlatform.OSXEditor))
 			{
 				this.minSize = new Vector2(200f, 48f);
 				this.maxSize = new Vector2(340f, 620f);
@@ -548,11 +548,11 @@ namespace RenderHeads.Media.AVProMovieCapture.Editor
 			EditorPrefs.SetInt(SettingsPrefix + "RenderAntiAliasing", _renderAntiAliasing);
 			EditorPrefs.SetBool(SettingsPrefix + "UseContributingCameras", _useContributingCameras);
 
-			EditorPrefs.SetString(SettingsPrefix + "VideoCodecName", (_videoCodec != null)?_videoCodec.Name:string.Empty);
-			EditorPrefs.SetString(SettingsPrefix + "AudioCodecName", (_audioCodec != null)?_audioCodec.Name:string.Empty);
+			EditorPrefs.SetString(SettingsPrefix + "VideoCodecName", (_videoCodec != null) ? _videoCodec.Name : string.Empty);
+			EditorPrefs.SetString(SettingsPrefix + "AudioCodecName", (_audioCodec != null) ? _audioCodec.Name : string.Empty);
 
 			EditorPrefs.SetInt(SettingsPrefix + "AudioCaptureSource", (int)_audioCaptureSource);
-			EditorPrefs.SetString(SettingsPrefix + "AudioInputDeviceName", (_audioInputDevice != null)?_audioInputDevice.Name:string.Empty);
+			EditorPrefs.SetString(SettingsPrefix + "AudioInputDeviceName", (_audioInputDevice != null) ? _audioInputDevice.Name : string.Empty);
 			EditorPrefs.SetInt(SettingsPrefix + "ManualAudioChannelCount", _manualAudioChannelCount);
 			EditorPrefs.SetInt(SettingsPrefix + "ManualAudioSampleRate", _manualAudioSampleRate);
 
@@ -697,7 +697,7 @@ namespace RenderHeads.Media.AVProMovieCapture.Editor
 			if (_outputTarget == OutputTarget.VideoFile)
 			{
 				capture.FilenamePrefix = _filenamePrefix;
-				capture.AppendFilenameTimestamp  = _appendTimestamp;
+				capture.AppendFilenameTimestamp = _appendTimestamp;
 				capture.AllowManualFileExtension = true;
 				capture.FilenameExtension = _filenameExtension;
 			}
@@ -749,15 +749,15 @@ namespace RenderHeads.Media.AVProMovieCapture.Editor
 				capture.OutputFolderPath = _outputFolderRelative;
 			}
 
-			capture.NativeForceVideoCodecIndex = (_videoCodec != null)?_videoCodec.Index:-1;
+			capture.NativeForceVideoCodecIndex = (_videoCodec != null) ? _videoCodec.Index : -1;
 
-			capture.AudioCaptureSource = IsAudioCaptured()?_audioCaptureSource:AudioCaptureSource.None;
+			capture.AudioCaptureSource = IsAudioCaptured() ? _audioCaptureSource : AudioCaptureSource.None;
 			if (capture.AudioCaptureSource != AudioCaptureSource.None)
 			{
-				capture.NativeForceAudioCodecIndex = (_audioCodec != null)?_audioCodec.Index:-1;
+				capture.NativeForceAudioCodecIndex = (_audioCodec != null) ? _audioCodec.Index : -1;
 				if (capture.AudioCaptureSource == AudioCaptureSource.Microphone)
 				{
-					capture.ForceAudioInputDeviceIndex = (_audioInputDevice != null)?_audioInputDevice.Index:-1;
+					capture.ForceAudioInputDeviceIndex = (_audioInputDevice != null) ? _audioInputDevice.Index : -1;
 				}
 				else if (capture.AudioCaptureSource == AudioCaptureSource.Manual)
 				{
@@ -815,7 +815,7 @@ namespace RenderHeads.Media.AVProMovieCapture.Editor
 					_gameObject = new GameObject(TempGameObjectName);
 					_gameObject.hideFlags = HideFlags.HideAndDontSave;
 #if UNITY_5 || UNITY_5_4_OR_NEWER
-					_gameObject.hideFlags |= HideFlags.DontSaveInBuild|HideFlags.DontSaveInEditor|HideFlags.DontUnloadUnusedAsset;
+					_gameObject.hideFlags |= HideFlags.DontSaveInBuild | HideFlags.DontSaveInEditor | HideFlags.DontUnloadUnusedAsset;
 #endif
 					Object.DontDestroyOnLoad(_gameObject);
 				}
@@ -939,7 +939,7 @@ namespace RenderHeads.Media.AVProMovieCapture.Editor
 					_captureCamera360ODS.Setup.pixelSliceSize = _odsSettings.pixelSliceSize;
 					_captureCamera360ODS.Setup.paddingSize = _odsSettings.paddingSize;
 					_captureCamera360ODS.Setup.cameraClearMode = _odsSettings.cameraClearMode;
-					_captureCamera360ODS.Setup.cameraClearColor= _odsSettings.cameraClearColor;
+					_captureCamera360ODS.Setup.cameraClearColor = _odsSettings.cameraClearColor;
 					break;
 			}
 #if AVPRO_MOVIECAPTURE_PLAYABLES_SUPPORT
@@ -1049,9 +1049,9 @@ namespace RenderHeads.Media.AVProMovieCapture.Editor
 				_captureCamera360 = null;
 				_captureCamera360ODS = null;
 				_cameraSelector = null;
-				#if AVPRO_MOVIECAPTURE_PLAYABLES_SUPPORT
+#if AVPRO_MOVIECAPTURE_PLAYABLES_SUPPORT
 				_timelineController = null;
-				#endif
+#endif
 			}
 			_isInit = false;
 			_isCreated = false;
@@ -1213,11 +1213,11 @@ namespace RenderHeads.Media.AVProMovieCapture.Editor
 					switch (item.MediaApi)
 					{
 						case MediaApi.DirectShow:
-						title = "DirectShow Legacy API:";
-						break;
+							title = "DirectShow Legacy API:";
+							break;
 						case MediaApi.MediaFoundation:
-						title = "Media Foundation API:";
-						break;
+							title = "Media Foundation API:";
+							break;
 					}
 					menu.AddSeparator("");
 					menu.AddDisabledItem(new GUIContent(title));
@@ -1313,7 +1313,7 @@ namespace RenderHeads.Media.AVProMovieCapture.Editor
 		void OnGUI()
 		{
 			if ((Application.platform != RuntimePlatform.WindowsEditor)
-			&&  (Application.platform != RuntimePlatform.OSXEditor))
+			&& (Application.platform != RuntimePlatform.OSXEditor))
 			{
 				EditorGUILayout.LabelField("AVPro Movie Capture Window only works on the Windows and macOS platforms.");
 				return;
@@ -1562,11 +1562,11 @@ namespace RenderHeads.Media.AVProMovieCapture.Editor
 				GUILayout.BeginHorizontal();
 
 				Transparency captureTransparency = capture.Transparency;
-				bool sideBySideTransparency = ( captureTransparency == Transparency.TopBottom || captureTransparency == Transparency.LeftRight );
+				bool sideBySideTransparency = (captureTransparency == Transparency.TopBottom || captureTransparency == Transparency.LeftRight);
 
 				//if (Event.current.type == EventType.Repaint)
 				{
-					if( _showAlpha && !sideBySideTransparency )
+					if (_showAlpha && !sideBySideTransparency)
 					{
 						Rect textureRect = GUILayoutUtility.GetAspectRect(aspect);//(width, width / aspect, GUILayout.ExpandWidth(true), GUILayout.ExpandHeight(false));
 						EditorGUI.DrawPreviewTexture(textureRect, texture, null, ScaleMode.ScaleToFit);
@@ -1575,13 +1575,13 @@ namespace RenderHeads.Media.AVProMovieCapture.Editor
 					}
 					else
 					{
-						if( sideBySideTransparency )
+						if (sideBySideTransparency)
 						{
 							Texture sideBySideTexture = capture.GetSideBySideTexture();
-							if( sideBySideTexture )
+							if (sideBySideTexture)
 							{
 								float sideBySideAspect = (float)sideBySideTexture.width / (float)sideBySideTexture.height;
-								Rect textureRect = GUILayoutUtility.GetAspectRect( sideBySideAspect/*, GUILayout.MaxHeight(256.0f)*/);
+								Rect textureRect = GUILayoutUtility.GetAspectRect(sideBySideAspect/*, GUILayout.MaxHeight(256.0f)*/);
 								EditorGUI.DrawPreviewTexture(textureRect, sideBySideTexture, null, ScaleMode.StretchToFill);
 							}
 						}
@@ -1594,7 +1594,7 @@ namespace RenderHeads.Media.AVProMovieCapture.Editor
 				}
 				GUILayout.EndHorizontal();
 
-				if( !sideBySideTransparency )
+				if (!sideBySideTransparency)
 				{
 					GUILayout.BeginHorizontal();
 					GUILayout.FlexibleSpace();
@@ -1616,7 +1616,7 @@ namespace RenderHeads.Media.AVProMovieCapture.Editor
 			EditorGUILayout.LabelField("Dimensions", capture.GetRecordingWidth() + "x" + capture.GetRecordingHeight() + " @ " + capture.FrameRate.ToString("F2") + "hz");
 			if (capture.OutputTarget == OutputTarget.VideoFile)
 			{
-				EditorGUILayout.LabelField("Codec", (capture.SelectedVideoCodec != null)?capture.SelectedVideoCodec.Name:"None");
+				EditorGUILayout.LabelField("Codec", (capture.SelectedVideoCodec != null) ? capture.SelectedVideoCodec.Name : "None");
 			}
 			else if (capture.OutputTarget == OutputTarget.ImageSequence)
 			{
@@ -1632,16 +1632,16 @@ namespace RenderHeads.Media.AVProMovieCapture.Editor
 				}
 				else if (capture.AudioCaptureSource == AudioCaptureSource.Microphone)
 				{
-					EditorGUILayout.LabelField("Source", (capture.SelectedAudioInputDevice != null)?capture.SelectedAudioInputDevice.Name:"None");
+					EditorGUILayout.LabelField("Source", (capture.SelectedAudioInputDevice != null) ? capture.SelectedAudioInputDevice.Name : "None");
 				}
 				else if (capture.AudioCaptureSource == AudioCaptureSource.Wwise && capture.UnityAudioCapture != null)
 				{
 					EditorGUILayout.LabelField("Source", "Wwise");
 				}
-				EditorGUILayout.LabelField("Codec", (capture.SelectedAudioCodec!= null)?capture.SelectedAudioCodec.Name:"None");
+				EditorGUILayout.LabelField("Codec", (capture.SelectedAudioCodec != null) ? capture.SelectedAudioCodec.Name : "None");
 				if (capture.UnityAudioCapture != null && (capture.AudioCaptureSource == AudioCaptureSource.Unity || capture.AudioCaptureSource == AudioCaptureSource.Wwise))
 				{
-					EditorGUILayout.LabelField("Sample Rate", (capture.CaptureStats.UnityAudioSampleRate/1000f).ToString("F1") + "Khz");
+					EditorGUILayout.LabelField("Sample Rate", (capture.CaptureStats.UnityAudioSampleRate / 1000f).ToString("F1") + "Khz");
 					EditorGUILayout.LabelField("Channels", capture.CaptureStats.UnityAudioChannelCount.ToString());
 				}
 			}
@@ -1756,11 +1756,11 @@ namespace RenderHeads.Media.AVProMovieCapture.Editor
 				switch (_superSizeIndex)
 				{
 					case 1:
-					superSize = 2;
-					break;
+						superSize = 2;
+						break;
 					case 2:
-					superSize = 4;
-					break;
+						superSize = 4;
+						break;
 				}
 				Vector2 captureSize = EditorScreenshot.GetGameViewSize() * superSize;
 
@@ -1772,7 +1772,7 @@ namespace RenderHeads.Media.AVProMovieCapture.Editor
 
 				GUILayout.BeginHorizontal();
 				GUILayout.Label("Supersample");
-				_superSizeIndex = GUILayout.SelectionGrid(_superSizeIndex, new string[]{"1x", "2x", "4x"}, 4);
+				_superSizeIndex = GUILayout.SelectionGrid(_superSizeIndex, new string[] { "1x", "2x", "4x" }, 4);
 				GUILayout.EndHorizontal();
 
 				GUILayout.BeginHorizontal();
@@ -1890,9 +1890,9 @@ namespace RenderHeads.Media.AVProMovieCapture.Editor
 						if (camera.targetTexture != null)
 						{
 							desc += " " + camera.targetTexture.width + "x" + camera.targetTexture.height;
-							#if UNITY_2019_1_OR_NEWER
+#if UNITY_2019_1_OR_NEWER
 							desc += " " + camera.targetTexture.graphicsFormat;
-							#endif
+#endif
 							texture = camera.targetTexture;
 						}
 					}
@@ -1948,9 +1948,9 @@ namespace RenderHeads.Media.AVProMovieCapture.Editor
 					if (rt != null)
 					{
 						desc += rt.name + " " + rt.width + "x" + rt.height;
-						#if UNITY_2019_1_OR_NEWER
+#if UNITY_2019_1_OR_NEWER
 						desc += " " + rt.graphicsFormat;
-						#endif
+#endif
 						texture = rt;
 					}
 
@@ -2227,9 +2227,9 @@ namespace RenderHeads.Media.AVProMovieCapture.Editor
 					if (_cameraNode.actualRenderingPath == RenderingPath.DeferredShading)
 #else
 					if (_cameraNode.actualRenderingPath == RenderingPath.DeferredLighting
-	#if AVPRO_MOVIECAPTURE_DEFERREDSHADING
+#if AVPRO_MOVIECAPTURE_DEFERREDSHADING
 					|| _cameraNode.actualRenderingPath == RenderingPath.DeferredShading
-	#endif
+#endif
 					)
 #endif
 					{
@@ -2273,7 +2273,7 @@ namespace RenderHeads.Media.AVProMovieCapture.Editor
 				}
 				if (_cubemapStereoPacking != (int)StereoPacking.None)
 				{
-					#if AVPRO_MOVIECAPTURE_UNITY_STEREOCUBEMAP_RENDER
+#if AVPRO_MOVIECAPTURE_UNITY_STEREOCUBEMAP_RENDER
 					if (!PlayerSettings.enable360StereoCapture)
 					{
 						GUI.color = Color.yellow;
@@ -2284,7 +2284,7 @@ namespace RenderHeads.Media.AVProMovieCapture.Editor
 							PlayerSettings.enable360StereoCapture = true;
 						}
 					}
-					#endif
+#endif
 					_cubemapStereoIPD = EditorGUILayout.FloatField("Interpupillary distance", _cubemapStereoIPD);
 				}
 				EditorGUILayout.PropertyField(_propCaptureWorldSpaceGUI, _guiCaptureWorldSpaceUI);
@@ -2436,7 +2436,7 @@ namespace RenderHeads.Media.AVProMovieCapture.Editor
 					EditorGUILayout.LabelField("File Container", EditorStyles.boldLabel);
 					EditorGUI.indentLevel++;
 					_fileContainerIndex = EditorGUILayout.Popup("Extension", _fileContainerIndex, _fileExtensions);
-					if (_fileContainerIndex >= 0  && _fileContainerIndex < _fileExtensions.Length)
+					if (_fileContainerIndex >= 0 && _fileContainerIndex < _fileExtensions.Length)
 					{
 						_filenameExtension = _fileExtensions[_fileContainerIndex].ToLower();
 					}
@@ -2639,7 +2639,7 @@ namespace RenderHeads.Media.AVProMovieCapture.Editor
 				NativePlugin.Init();
 			}
 
-			_fileExtensions = GetSuitableFileExtensions(_videoCodec, IsAudioCaptured()?_audioCodec:null);
+			_fileExtensions = GetSuitableFileExtensions(_videoCodec, IsAudioCaptured() ? _audioCodec : null);
 			if (_fileContainerIndex >= _fileExtensions.Length)
 			{
 				_fileContainerIndex = 0;
@@ -2735,7 +2735,7 @@ namespace RenderHeads.Media.AVProMovieCapture.Editor
 			}
 
 #if UNITY_EDITOR_WIN
-			if (_audioCodec != null  && (_audioCodec.Name.EndsWith("MPEG Layer-3")))
+			if (_audioCodec != null && (_audioCodec.Name.EndsWith("MPEG Layer-3")))
 			{
 				GUI.color = Color.yellow;
 				GUILayout.TextArea("Warning: We have had reports that this codec doesn't work. Consider using a different codec");
@@ -2796,7 +2796,7 @@ namespace RenderHeads.Media.AVProMovieCapture.Editor
 				{
 					bool showAudioOptions = true;
 
-					#if AVPRO_MOVIECAPTURE_OFFLINE_AUDIOCAPTURE
+#if AVPRO_MOVIECAPTURE_OFFLINE_AUDIOCAPTURE
 					if (!IsCaptureRealTime() && _audioCaptureSource != AudioCaptureSource.Manual && _audioCaptureSource != AudioCaptureSource.Unity && _audioCaptureSource != AudioCaptureSource.Wwise)
 					{
 						GUI.color = Color.yellow;
@@ -2804,7 +2804,7 @@ namespace RenderHeads.Media.AVProMovieCapture.Editor
 						GUI.color = Color.white;
 						showAudioOptions = false;
 					}
-					#else
+#else
 					if (!IsCaptureRealTime() && _audioCaptureSource != AudioCaptureSource.Manual && _audioCaptureSource != AudioCaptureSource.Wwise)
 					{
 						GUI.color = Color.yellow;
@@ -2812,7 +2812,7 @@ namespace RenderHeads.Media.AVProMovieCapture.Editor
 						GUI.color = Color.white;
 						showAudioOptions = false;
 					}
-					#endif
+#endif
 					if (IsCaptureRealTime() && _audioCaptureSource == AudioCaptureSource.Wwise)
 					{
 						GUI.color = Color.yellow;
@@ -2820,7 +2820,7 @@ namespace RenderHeads.Media.AVProMovieCapture.Editor
 						GUI.color = Color.white;
 						showAudioOptions = false;
 					}
-					#if !AVPRO_MOVIECAPTURE_WWISE_SUPPORT
+#if !AVPRO_MOVIECAPTURE_WWISE_SUPPORT
 					if (!IsCaptureRealTime() && _audioCaptureSource == AudioCaptureSource.Wwise)
 					{
 						GUI.color = Color.red;
@@ -2828,7 +2828,7 @@ namespace RenderHeads.Media.AVProMovieCapture.Editor
 						GUI.color = Color.white;
 						showAudioOptions = false;
 					}
-					#endif
+#endif
 
 					if (showAudioOptions)
 					{
